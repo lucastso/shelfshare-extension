@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Extension",
+    "description": "Collaborative bookmark manager for sharing and organizing bookmarks with folders, accessible across devices.",
+    "version": "1.0",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Extension"
+    },
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "storage"
+    ],
+    "host_permissions": [
+        "https://*/*"
+      ],
+    "content_scripts": [
+      {
+        "js": [
+          "popup.js"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ]
+  }
