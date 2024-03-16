@@ -13,8 +13,8 @@
     "default_popup": "popup.html",
     "default_title": "Tabdraw - Collaborative bookmark"
   },
-  "permissions": ["scripting", "activeTab", "storage"],
-  "host_permissions": ["https://*/*"],
+  "permissions": ["scripting", "activeTab", "storage", "https://<domain>"],
+  "host_permissions": ["https://*/*", "https://<domain>"],
   "content_scripts": [
     {
       "js": ["popup.js"],
