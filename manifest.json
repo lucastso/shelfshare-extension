@@ -13,12 +13,14 @@
     "default_popup": "popup.html",
     "default_title": "Tabdraw - Collaborative bookmark"
   },
-  "permissions": ["scripting", "activeTab", "storage", "https://<domain>"],
-  "host_permissions": ["https://*/*", "https://<domain>"],
+  "permissions": ["scripting", "activeTab", "storage"],
   "content_scripts": [
     {
-      "js": ["popup.js"],
+      "js": ["popup.js", "toggleIcon.js"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "script-src": ["'self'", "https://cdn.jsdelivr.net"]
+  }
 }

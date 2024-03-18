@@ -7,47 +7,53 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   var doneButton = document.getElementById("doneButton");
   var editButton = document.getElementById("editButton");
 
-  if (currentTab.url == "chrome://newtab/") {
+  if (currentTab.url.includes("chrome://")) {
     message.textContent = "You can't bookmark this tab!";
     message.style.color = "red";
     pageIcon.setAttribute("hidden", true);
+    doneButton.disabled = true;
+    doneButton.style.cursor = "not-allowed";
   } else {
     pageIcon.src = currentTab.favIconUrl;
     pageName.textContent = currentTab.title;
-    message.textContent = "Page Bookmarked!";
   }
 
-  setTimeout(function () {
-    message.textContent = "";
-  }, 5000);
-
   doneButton.addEventListener("click", function () {
-    window.close();
+    const data = {
+      user_id: 1,
+      folder_id: 1,
+      url: currentTab.url,
+      name: currentTab.title,
+      color: "#FAFAFA",
+      icon: currentTab.favIconUrl,
+    };
+
+    const endpointUrl = "http://localhost:5000/bookmark";
+
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify(data),
+    };
+
+    fetch(endpointUrl, options).then((response) => {
+      if (response.ok) {
+        message.textContent = "Page Bookmarked!";
+      } else {
+        message.textContent = "Error!";
+        message.style.color = "red";
+      }
+
+      setTimeout(function () {
+        message.textContent = "";
+      }, 5000);
+    });
   });
 
   editButton.addEventListener("click", function () {
-    window.open("http://localhost:3000/", "_blank", "aaa=9").focus();
+    window.open("http://localhost:3000/", "_blank").focus();
   });
-
-  // Dados a serem enviados
-  const data = {
-    user_id: 1,
-    folder_id: 1,
-    url: currentTab.url,
-    name: currentTab.title,
-    color: "#FAFAFA",
-    icon: currentTab.favIconUrl,
-  };
-
-  const endpointUrl = "http://localhost:5000/bookmark";
-
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  fetch(endpointUrl, requestOptions);
 });

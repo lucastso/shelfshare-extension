@@ -20,6 +20,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #353535;
 }
 
 #message {
@@ -36,14 +37,15 @@ body {
 
 .button {
   padding: 10px 20px;
-  background-color: #5f7b99;
-  color: #fff;
-  border: none;
+  background-color: #ffffff;
+  color: #353535;
+  border: 2px solid #353535;
   cursor: pointer;
   border-radius: 5px;
   font-family: "Outfit", sans-serif;
 }
 
 .button-done {
-  background-color: #007bff;
+  background-color: #353535;
+  color: white;
 }
