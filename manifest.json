@@ -16,7 +16,7 @@
   "permissions": ["scripting", "activeTab", "storage"],
   "content_scripts": [
     {
-      "js": ["popup.js", "toggleIcon.js"],
+      "js": ["popup.js"],
       "matches": ["<all_urls>"]
     }
   ],
