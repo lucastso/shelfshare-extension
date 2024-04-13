@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Tabdraw - Collaborative bookmark",
+  "name": "Shelfshare - Collaborative bookmark",
   "description": "Collaborative bookmark manager for sharing and organizing bookmarks with folders, accessible across devices.",
   "version": "1.0",
   "icons": {
@@ -11,7 +11,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Tabdraw - Collaborative bookmark"
+    "default_title": "Shelfshare - Collaborative bookmark"
   },
   "permissions": ["scripting", "activeTab", "storage"],
   "content_scripts": [
