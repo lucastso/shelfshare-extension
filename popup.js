@@ -20,15 +20,14 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
   doneButton.addEventListener("click", function () {
     const data = {
-      user_id: "1",
-      folder_id: 1,
+      userId: "1",
+      folderId: 1,
       url: currentTab.url,
       name: currentTab.title,
-      color: "#FAFAFA",
       icon: currentTab.favIconUrl,
     };
 
-    const endpointUrl = "http://localhost:3000/api/bookmarks";
+    const endpointUrl = "http://localhost:5000/bookmarks";
 
     const options = {
       method: "POST",
