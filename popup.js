@@ -21,7 +21,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   doneButton.addEventListener("click", function () {
     const data = {
       userId: "1",
-      folderId: 1,
       url: currentTab.url,
       name: currentTab.title,
       icon: currentTab.favIconUrl,
